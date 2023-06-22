@@ -1,0 +1,21 @@
+const form = document.querySelector('#searchform'); 
+form.addEventListener('submit',async function (e){
+    e.preventDefault();
+    const search2 = form.elements.query2.value;
+    const res =  await axios.get(`https://api.tvmaze.com/search/shows?q=${search2}`)
+    console.log(res.data);
+    makeImages(res.data)
+    form.document.query2.value =''
+    form.document
+
+})
+
+const makeImages = (shows) => {
+    for(let num of shows){
+        if(num.show.image) {
+        const img = document.createElement('img') ;
+        img.src = num.show.image.medium;
+        document.body.append(img)
+        }
+    }
+}
