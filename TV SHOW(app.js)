@@ -2,6 +2,7 @@ const form = document.querySelector('#searchform');
 form.addEventListener('submit',async function (e){
     e.preventDefault();
     const search2 = form.elements.query2.value;
+    #API tvmaze 사용
     const res =  await axios.get(`https://api.tvmaze.com/search/shows?q=${search2}`)
     console.log(res.data);
     makeImages(res.data)
